@@ -4,7 +4,7 @@ from . import db
 class Course(db.Model):
     __tablename__ = "timetable"
     id = db.Column(db.Integer, primary_key = True)
-    courseName = db.Column(db.String(64), unique = True)
+    courseName = db.Column(db.String(64))
     courseType = db.Column(db.String(64))
     courseId = db.Column(db.Integer)
     courseLink = db.Column(db.String(64))
