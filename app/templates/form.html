@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Linkey</title>
+  </head>
+  <body>
+      <br>
+    <div class="container">
+        <h1>Linkey</h1>
+        <form method="POST" action="/adder" autocomplete="off">
+            <div class="form-group">
+            {{ form.name.label }}{{ form.name(id="name") }}
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                {{ form.courseType.label }}
+                {{ form.courseType }}
+                </div>
+                <div class="form-group col-md-6">
+                {{ form.courseId.label }}
+                {{ form.courseId }}
+                </div>
+                <div class="form-group col-md-3">
+                  {{ form.slot.label }}
+                  {{ form.slot }}
+                </div>
+            </div>
+            <div class="form-group">
+            {{ form.link.label }}{{ form.link }}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            {{ form.hidden_tag() }}
+        </form>
+        <br>
+        <ul>
+          <li>Course Id Needs to be an integer between 1000 and 9999</li>
+        </ul>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script>
+        attrs = ["courseType","courseId","slot","name","link"];
+        for(item in attrs)
+        {
+          let crs = document.getElementById(attrs[item]);
+          crs.classList.add("form-control");
+        }
+    </script>
+  </body>
+</html>
