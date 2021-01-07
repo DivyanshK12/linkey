@@ -7,11 +7,16 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="icon" href="static/images/icon.svg" type="image/svg">
 
-    <title>Index</title>
+    <title>Linkey | {{page}}</title>
   </head>
   <body>
     <div class="container">
+      <br>
+      <a class="btn btn-primary" href="/adder" role="button">Add courses</a>
+      <a class="btn btn-primary" href="/" role="button">Home</a>
+      <a class="btn btn-primary" href="/all" role="button">All Courses</a>
         <h1>Courses Added :</h1>
         <ul class="list-group">
         {% for course in data %}
