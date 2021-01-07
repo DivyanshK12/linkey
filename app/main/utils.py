@@ -14,7 +14,7 @@ def get_slot(dt_object):
     try :
         slot = slot_dict[day][accessor]
     except KeyError as e:
-        return "X"
+        return None
     return slot
 
 def is_valid_link(url):
