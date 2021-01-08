@@ -4,7 +4,7 @@ from wtforms import StringField, SelectField, IntegerField
 from wtforms.validators import DataRequired, NumberRange
 
 slot_options = [(x,x) for x in "ABCDEFGPQRS"]
-branches = ["AI","CS","CE","CH","EE","EP","ES","ME","MA","MS"]
+branches = ["AI","CS","CE","CH","EE","EP","ES","ME","MA","MS","ID"]
 branch_options = [(x,x) for x in branches]
 
 class CourseForm(FlaskForm):

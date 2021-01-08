@@ -12,15 +12,29 @@
     <title>Linkey | {{page}}</title>
   </head>
   <body>
-    <div class="container">
-      <br>
-      <a class="btn btn-primary" href="/adder" role="button">Add courses</a>
-      <a class="btn btn-primary" href="/" role="button">Home</a>
-      <a class="btn btn-primary" href="/all" role="button">All Courses</a>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+        <a class="navbar-brand" href="/">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/adder">Add Courses <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/all">All Courses</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="container">
+        <br>
         <h1>Courses Added :</h1>
         <ul class="list-group">
         {% for course in data %}
-            <a href="{{course.courseLink}}" class="list-group-item list-group-item-action" target="_blank">{{ course.courseType }}{{ course.courseId }} : {{ course.courseName }}</a>
+            <a href="{{course.courseLink}}" class="list-group-item list-group-item-action list-group-item-danger" target="_blank">{{ course.courseType }}{{ course.courseId }} : {{ course.courseName }}</a>
         {% endfor %}
         </ul>
     </div>

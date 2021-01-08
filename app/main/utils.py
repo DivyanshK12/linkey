@@ -13,14 +13,11 @@ def get_slot():
     dt_object = datetime.utcnow()
     ist_time = timedelta(hours =5, minutes = 30)
     dt_object += ist_time
-    print("Datetime accessed :",dt_object)
     accessor = dt_object.hour
     day = dt_object.weekday()
     if accessor in slot_dict[day]:
-        print("Returned")
         return slot_dict[day][accessor]
     else:
-        print("Not returned")
         return None
 
 def is_valid_link(url):

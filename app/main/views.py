@@ -40,3 +40,7 @@ def index():
 def aller():
     data = Course.query.all()
     return render_template("index.html",data = data,page = "All Courses")
+
+@main.route('/empty')
+def empty():
+    return render_template("empty.html")
