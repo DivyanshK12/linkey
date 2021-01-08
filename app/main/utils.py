@@ -7,8 +7,9 @@ slot_dict = {0:{9:"A", 10:"B", 11:"C", 12:"D", 14:"P", 16:"Q",23:"D"},
             3:{9:"C", 10:"A", 11:"B", 12:"E", 14:"Q", 16:"P"},
             4:{9:"E", 10:"F", 11:"D", 12:"G", 14:"S", 16:"R",13:"B"}}
 
-def get_slot(dt_object):
+def get_slot():
     """Function to return the string slot using data passed from a datetime.datetime object"""
+    dt_object = datetime.now()
     accessor = dt_object.hour
     day = dt_object.weekday()
     if accessor in slot_dict[day]:
@@ -24,7 +25,5 @@ def is_valid_link(url):
     match_webex = re.search(regex_webex, str(url), re.MULTILINE)
     return True if (match_google or match_webex) else False
 
-# if __name__ == "__main__":
-#     print(is_valid("meet.google.com/iuc-xcer-zwo?pli=1&authuser=1"))
-#     print(is_valid("https://meet.google.com/snq-iaos-zjg?pli=1&authuser=1"))
-#     print(is_valid(" https://iith.webex.com/meet/vc4.iith"))
+if __name__ == "__main__":
+    print(get_slot())

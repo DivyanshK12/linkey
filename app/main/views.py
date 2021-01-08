@@ -29,8 +29,7 @@ def adder():
 
 @main.route('/')
 def index():
-    time_obj = datetime.now()
-    slot = get_slot(time_obj)
+    slot = get_slot()
     if slot is not None :
         data = Course.query.filter_by(courseSlot = slot).all()
         return render_template("index.html",data = data,page = "Home")
