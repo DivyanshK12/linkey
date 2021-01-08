@@ -59,6 +59,7 @@
         <hr>
             <div class="alert alert-dark" role="alert">Course Id Needs to be an integer between 1000 and 9999</div>
             <div class="alert alert-dark" role="alert">Works only for valid google meet links and webex links</div>
+            <div class="alert alert-dark" role="alert">Do not forget to include https:// in front of meet links as path is relative otherwise</div>
         {% with messages = get_flashed_messages() %}
                     {% if messages %}
                             {% for message in messages %}
