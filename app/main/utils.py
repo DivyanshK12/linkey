@@ -1,4 +1,5 @@
 from datetime import datetime
+from datetime import timedelta
 import re
 
 slot_dict = {0:{9:"A", 10:"B", 11:"C", 12:"D", 14:"P", 16:"Q",23:"D"},
@@ -9,7 +10,9 @@ slot_dict = {0:{9:"A", 10:"B", 11:"C", 12:"D", 14:"P", 16:"Q",23:"D"},
 
 def get_slot():
     """Function to return the string slot using data passed from a datetime.datetime object"""
-    dt_object = datetime.now()
+    dt_object = datetime.utcnow()
+    ist_time = timedelta(hours =5, minutes = 30)
+    dt_object += ist_time
     print("Datetime accessed :",dt_object)
     accessor = dt_object.hour
     day = dt_object.weekday()
