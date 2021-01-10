@@ -15,7 +15,7 @@ def get_slot():
     dt_object += ist_time
     accessor = dt_object.hour
     day = dt_object.weekday()
-    if accessor in slot_dict[day]:
+    if day in slot_dict and accessor in slot_dict[day]:
         return slot_dict[day][accessor]
     else:
         return None
@@ -23,11 +23,10 @@ def get_slot():
 def is_valid_link(url):
     # Validates for google meet
     regex_google = r"https://meet.google.com/[a-z0-9\-]*"
-    regex_webex = r" https://iith.webex.com/meet/"
+    regex_webex = r"https://iithyderabad.webex.com/iithyderabad/"
     match_google = re.search(regex_google, str(url), re.MULTILINE)
     match_webex = re.search(regex_webex, str(url), re.MULTILINE)
     return True if (match_google or match_webex) else False
 
 # if __name__ == "__main__":
-#     print(is_valid_link("meet.google.com/iuc-xcer-zwo?pli=1&authuser=1"))
-#     print(is_valid_link("https://meet.google.com/iuc-xcer-zwo"))
+#     print(is_valid_link("https://iithyderabad.webex.com/iithyderabad/j.php?MTID=md9704ce1843e34eb55fdc97c3bfec0d4"))
