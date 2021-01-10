@@ -7,7 +7,7 @@ class Course(db.Model):
     courseName = db.Column(db.String(64))
     courseType = db.Column(db.String(64))
     courseId = db.Column(db.Integer)
-    courseLink = db.Column(db.String(128))
+    courseLink = db.Column(db.String(256))
     courseSlot = db.Column(db.String(64))
     # segment_id = db.Column(db.Integer, db.ForeignKey('segment.id'))
 
