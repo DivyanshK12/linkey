@@ -32,14 +32,16 @@ def index():
     slot = get_slot()
     if slot is not None :
         data = Course.query.filter_by(courseSlot = slot).all()
-        return render_template("index.html",data = data,page = "Home")
+        return render_template("index.html",data = data)
     else:
         return render_template("empty.html")
 
 @main.route('/all')
 def aller():
-    data = Course.query.all()
-    return render_template("index.html",data = data,page = "All Courses")
+    data = dict()
+    for slot in "ABCDEFGPQRS":
+        data[slot] = Course.query.filter_by(courseSlot = slot).all()
+    return render_template("all_courses.html",data = data)
 
 @main.route('/empty')
 def empty():
@@ -51,11 +53,14 @@ def remover():
     if form.validate_on_submit():
 
         form_inp = Course.query.filter_by(courseType = form.courseType.data, courseId = form.courseId.data, courseSlot = form.slot.data).first()
-        if form_inp is not None:
-            db.session.delete(form_inp)
-            db.session.commit()
+        if form.Password.data == "Ragnarok":
+            if form_inp is not None :
+                db.session.delete(form_inp)
+                db.session.commit()
+            else:
+                flash("Course Doesn't exist")
         else:
-            flash("Course Doesn't exist")
+            flash("Invalid Password Entered")
         return redirect(url_for('.remover'))
 
     return render_template("form_rm.html",form = form)# current_time = datetime.utcnow()
