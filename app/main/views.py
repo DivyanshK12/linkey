@@ -32,7 +32,7 @@ def index():
     slot = get_slot()
     if slot is not None :
         data = Course.query.filter_by(courseSlot = slot).all()
-        return render_template("index.html",data = data)
+        return render_template("index.html",data = data, active = len(data))
     else:
         return render_template("empty.html")
 
@@ -51,9 +51,8 @@ def empty():
 def remover():
     form = RemoverForm()
     if form.validate_on_submit():
-
-        form_inp = Course.query.filter_by(courseType = form.courseType.data, courseId = form.courseId.data, courseSlot = form.slot.data).first()
         if form.Password.data == "Ragnarok":
+            form_inp = Course.query.filter_by(courseType = form.courseType.data, courseId = form.courseId.data, courseSlot = form.slot.data).first()
             if form_inp is not None :
                 db.session.delete(form_inp)
                 db.session.commit()

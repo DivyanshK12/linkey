@@ -34,12 +34,16 @@
       </nav>
       <div class="container">
         <br>
-        <h1>Courses Added :</h1>
+        {% if active != 0%}
+        <h1>Courses Added : </h1>
         <ul class="list-group">
         {% for course in data %}
             <a href="{{course.courseLink}}" class="list-group-item list-group-item-action list-group-item-danger" target="_blank">{{ course.courseType }}{{ course.courseId }} : {{ course.courseName }}</a>
         {% endfor %}
         </ul>
+        {% else %}
+        <h3 class = "text-center"> ~ No active courses right now ~ </h3>
+        {% endif%}
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
