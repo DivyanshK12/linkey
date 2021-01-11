@@ -2,7 +2,7 @@ from datetime import datetime
 from flask import render_template, session, redirect, url_for, flash
 
 from . import main
-from .forms import CourseForm
+from .forms import CourseForm, RemoverForm
 from .. import db
 from ..models import Course
 from .utils import *
@@ -25,7 +25,7 @@ def adder():
         db.session.commit()
         return redirect(url_for('.adder'))
 
-    return render_template("form.html",form = form, name = session.get('name'))# current_time = datetime.utcnow()
+    return render_template("form.html",form = form)# current_time = datetime.utcnow()
 
 @main.route('/')
 def index():
@@ -44,3 +44,19 @@ def aller():
 @main.route('/empty')
 def empty():
     return render_template("empty.html")
+
+@main.route('/remover',methods = ["GET","POST"])
+def remover():
+    form = RemoverForm()
+    if form.validate_on_submit():
+
+        form_inp = Course.query.filter_by(courseType = form.courseType.data, courseId = form.courseId.data, courseSlot = form.slot.data).first()
+        if form_inp is not None:
+            db.session.delete(form_inp)
+            db.session.commit()
+        else:
+            flash("Course Doesn't exist")
+        return redirect(url_for('.remover'))
+
+    return render_template("form_rm.html",form = form)# current_time = datetime.utcnow()
+
