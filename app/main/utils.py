@@ -11,7 +11,7 @@ slot_dict = {0:{9:"A", 10:"B", 11:"C", 12:"D", 14:"P",13:"P", 16:"Q",17:"Q"},
 def get_slot():
     """Function to return the string slot using data passed from a datetime.datetime object"""
     dt_object = datetime.utcnow()
-    ist_time = timedelta(hours =5, minutes = 30)
+    ist_time = timedelta(hours =5, minutes = 35) # Will give the link 5 minutes before the class
     dt_object += ist_time
     accessor = dt_object.hour
     day = dt_object.weekday()
