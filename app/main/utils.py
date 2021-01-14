@@ -24,9 +24,8 @@ def is_valid_link(url):
     # Validates for google meet
     regex_google = r"https://meet.google.com/[a-z0-9\-]*"
     regex_webex = r"https://iithyderabad.webex.com/iithyderabad/"
+    regex_microsoft = r"https://teams.microsoft.com/l/meetup-join/"
     match_google = re.search(regex_google, str(url), re.MULTILINE)
     match_webex = re.search(regex_webex, str(url), re.MULTILINE)
-    return True if (match_google or match_webex) else False
-
-# if __name__ == "__main__":
-#     print(is_valid_link("https://iithyderabad.webex.com/iithyderabad/j.php?MTID=md9704ce1843e34eb55fdc97c3bfec0d4"))
+    match_microsoft = re.search(regex_microsoft, str(url), re.MULTILINE)
+    return True if (match_google or match_webex or match_microsoft) else False

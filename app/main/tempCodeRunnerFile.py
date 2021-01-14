@@ -1,0 +1,4 @@
+if __name__ == "__main__":
+    print(is_valid_link("https://iithyderabad.webex.com/iithyderabad/j.php?MTID=md9704ce1843e34eb55fdc97c3bfec0d4"))
+    print(is_valid_link("https://teams.microsoft.com/l/meetup-join/19%3af668e629bf494cec817a9e56ae5e4232%40thread.tacv2/1610604255440?context=%7b%22Tid%22%3a%222f057da9-71e5-4402-9d02-954621afa5a6%22%2c%22Oid%22%3a%22e13f9be7-063a-4760-85cb-2f085d6c49bc%22%7d"))
+    print(is_valid_link("https://teams.microsoft.com/l/meetup-join/19%3a4001c27b52124c7b94283aeeee5fa892%40thread.tacv2/1610630015836?context=%7b%22Tid%22%3a%222f057da9-71e5-4402-9d02-954621afa5a6%22%2c%22Oid%22%3a%22b63f7013-c1f5-48e4-8d3d-da05b312eb99%22%7d"))

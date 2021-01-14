@@ -47,6 +47,10 @@ def aller():
 def empty():
     return render_template("empty.html")
 
+@main.route('/sloter')
+def slots():
+    return render_template("slot_timetable.html")
+
 @main.route('/remover',methods = ["GET","POST"])
 def remover():
     form = RemoverForm()
