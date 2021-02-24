@@ -15,17 +15,31 @@ def get_slot():
     dt_object += ist_time
     accessor = dt_object.hour
     day = dt_object.weekday()
-    if day in slot_dict and accessor in slot_dict[day]:
-        return slot_dict[day][accessor]
-    else:
-        return None
+    # if day in slot_dict and accessor in slot_dict[day]:
+    #     return slot_dict[day][accessor]
+    # else:
+    #     return None
+    return slot_dict.get(day).get(accessor)
 
+# Validator functions
 def is_valid_link(url):
     # Validates for google meet
-    regex_google = r"https://meet.google.com/[a-z0-9\-]*"
-    regex_webex = r"https://iithyderabad.webex.com/iithyderabad/"
-    regex_microsoft = r"https://teams.microsoft.com/l/meetup-join/"
-    match_google = re.search(regex_google, str(url), re.MULTILINE)
-    match_webex = re.search(regex_webex, str(url), re.MULTILINE)
-    match_microsoft = re.search(regex_microsoft, str(url), re.MULTILINE)
+    match_google = validate_google(url)
+    match_webex = validate_webex(url)
+    match_microsoft = validate_microsoft(url)
     return True if (match_google or match_webex or match_microsoft) else False
+
+def validate_google(url):
+    regex_google = r"https://meet.google.com/[a-z0-9\-]*"
+    match_google = re.search(regex_google, str(url), re.MULTILINE)
+    return match_google
+
+def validate_webex(url):
+    regex_webex = r"https://iithyderabad.webex.com/iithyderabad/"
+    match_webex = re.search(regex_webex, str(url), re.MULTILINE)
+    return match_webex
+
+def validate_microsoft(url):
+    regex_microsoft = r"https://teams.microsoft.com/l/meetup-join/"
+    match_microsoft = re.search(regex_microsoft, str(url), re.MULTILINE)
+    return match_microsoft

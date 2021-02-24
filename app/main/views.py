@@ -1,8 +1,8 @@
 from datetime import datetime
 from flask import render_template, session, redirect, url_for, flash
-
+from flask import request, make_response
 from . import main
-from .forms import CourseForm, RemoverForm
+from .forms import CourseForm, RemoverForm, PreferenceForm
 from .. import db
 from ..models import Course
 from .utils import *
@@ -30,18 +30,21 @@ def adder():
 @main.route('/')
 def index():
     slot = get_slot()
+    last_id = request.cookies.get('default_id', 0)
+    #Call utils function
     if slot is not None :
         data = Course.query.filter_by(courseSlot = slot).all()
-        return render_template("index.html",data = data, active = len(data))
+        return render_template("index.html",data = data, active = len(data), last_id = last_id)
     else:
         return render_template("empty.html")
 
 @main.route('/all')
 def aller():
     data = dict()
+    last_id = request.cookies.get('default_id', 0)
     for slot in "ABCDEFGPQRS":
         data[slot] = Course.query.filter_by(courseSlot = slot).all()
-    return render_template("all_courses.html",data = data)
+    return render_template("all_courses.html",data = data, last_id = last_id)
 
 @main.route('/empty')
 def empty():
@@ -50,6 +53,16 @@ def empty():
 @main.route('/sloter')
 def slots():
     return render_template("slot_timetable.html")
+
+@main.route('/preferences', methods = ["GET","POST"])
+def preferences():
+    form = PreferenceForm()
+    last_id = request.cookies.get('default_id', 0)
+    resp = make_response(render_template("preference.html", form=form, display_id=last_id))
+    if form.validate_on_submit():
+        resp.set_cookie('default_id', str(form.default_id.data))
+        # Does not accept integer in cookie
+    return resp
 
 @main.route('/remover',methods = ["GET","POST"])
 def remover():
