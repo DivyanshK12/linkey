@@ -41,12 +41,5 @@
                     {% endif %}
                 {% endwith %}
     </div>
-    <script>
-        attrs = ["courseType","courseId","slot","name","link"];
-        for(item in attrs)
-        {
-          let crs = document.getElementById(attrs[item]);
-          crs.classList.add("form-control");
-        }
-    </script>
+    <script src="/static/scripts/forms.js"></script>
 {% endblock %}

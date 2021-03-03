@@ -18,7 +18,7 @@ class RemoverForm(FlaskForm):
     courseType = SelectField(u'Department',choices = branch_options,validators=[DataRequired()])
     courseId = IntegerField(validators = [NumberRange(1000,9999),DataRequired()])
     slot = SelectField(u'Slot',choices = slot_options,validators=[DataRequired()])
-    Password = PasswordField()
+    password = PasswordField()
 
 class PreferenceForm(FlaskForm):
     default_id = IntegerField(validators=[DataRequired()])

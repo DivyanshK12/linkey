@@ -18,8 +18,8 @@
                   {{ form.slot }}
                 </div>
                 <div class="form-group col-md-12">
-                  {{ form.Password.label }}
-                  {{ form.Password }}
+                  {{ form.password.label }}
+                  {{ form.password }}
                 </div>
             </div>
             <button type="submit" class="btn btn-dark">Submit</button>
@@ -37,12 +37,5 @@
                     {% endif %}
                 {% endwith %}
     </div>
-    <script>
-        attrs = ["courseType","courseId","slot","Password"];
-        for(item in attrs)
-        {
-          let crs = document.getElementById(attrs[item]);
-          crs.classList.add("form-control");
-        }
-    </script>
+    <script src="/static/scripts/forms.js"></script>
 {% endblock %}
