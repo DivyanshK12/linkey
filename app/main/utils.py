@@ -19,7 +19,8 @@ def get_slot():
     #     return slot_dict[day][accessor]
     # else:
     #     return None
-    return slot_dict.get(day).get(accessor)
+    result = slot_dict.get(day)
+    return result.get(accessor) if result else result
 
 # Validator functions
 def is_valid_link(url):

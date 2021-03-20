@@ -6,6 +6,7 @@ from .forms import CourseForm, RemoverForm, PreferenceForm
 from .. import db
 from ..models import Course
 from .utils import *
+import os
 
 @main.route('/adder',methods = ["GET","POST"])
 def adder():
@@ -68,7 +69,7 @@ def preferences():
 def remover():
     form = RemoverForm()
     if form.validate_on_submit():
-        if form.Password.data == "Ragnarok":
+        if form.password.data == os.environ.get('pwd'):
             form_inp = Course.query.filter_by(courseType = form.courseType.data, courseId = form.courseId.data, courseSlot = form.slot.data).first()
             if form_inp is not None :
                 db.session.delete(form_inp)
