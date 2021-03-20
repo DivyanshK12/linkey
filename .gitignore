@@ -1,4 +1,5 @@
 venv/
 __pycache__/
 data-test.sqlite
+data-main.sqlite
 ButtonClicker.txt
