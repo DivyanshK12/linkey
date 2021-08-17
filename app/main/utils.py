@@ -41,6 +41,6 @@ def validate_webex(url):
     return match_webex
 
 def validate_microsoft(url):
-    regex_microsoft = r"https://teams.microsoft.com/l/meetup-join/"
+    regex_microsoft = r"https://teams.microsoft.com/dl/launcher/launcher.html"
     match_microsoft = re.search(regex_microsoft, str(url), re.MULTILINE)
     return match_microsoft

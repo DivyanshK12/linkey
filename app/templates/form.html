@@ -31,6 +31,11 @@
             <div class="alert alert-dark" role="alert">Course Id Needs to be an integer between 1000 and 9999</div>
             <div class="alert alert-dark" role="alert">Works only for valid google meet, webex and microsoft teams links</div>
             <div class="alert alert-dark" role="alert">Do not forget to include https:// in front of meet links as path is relative otherwise</div>
+            <div class="alert alert-dark" role="alert">Please remove additonal settings in Microsoft Teams meet URL while adding them here</div>
+            <hr>
+            <div class="alert alert-dark" role="alert">Google : https://meet.google.com/[a-z0-9\-]</div>
+            <div class="alert alert-dark" role="alert">Webex : https://iithyderabad.webex.com/iithyderabad/</div>
+            <div class="alert alert-dark" role="alert">Microsoft Teams : https://teams.microsoft.com/dl/launcher/launcher.html</div>
         {% with messages = get_flashed_messages() %}
                     {% if messages %}
                             {% for message in messages %}
